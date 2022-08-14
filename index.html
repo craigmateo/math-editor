@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/mathquill@0.10.1-a/build/mathquill.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/mathquill@0.10.1-a/build/mathquill.min.js"
+
+    ></script>
+
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="main.js"></script>
+    <script src="drag.js"></script>
+  </head>
+  <body>
+
+    <div class="container">
+        <div class="buttonContainer">
+            <table>
+                <tbody>
+                <tr>
+                <td><button id="fraction"><img src="assets/svg/fraction.svg" /></button></td>
+                <td><button id="exponent"><img src="assets/svg/exp.svg" /></button></td>
+                <td><button id="integral"><img src="assets/svg/sin.svg" /></button></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                </tr>
+                <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                </tr>
+                </tbody>
+                </table>
+       
+        
+        
+        </div>
+
+
+
+            <div class="dragdiv" id="dragdiv1">
+            <div class="dragdivheader" id="dragdivheader1">
+            <div class="math-field" id="math-field1"></div>
+            </div>
+            
+            </div>         
+        
+    </div>
+    <div id="testing">
+    <b>For testing:</b>
+        <p>LaTeX field1: <span id="latex1"></span></p>
+
+    </div>
+    <script>
+      var mathFieldSpan1 = document.getElementById('math-field1')
+      var mathFieldSpan2 = document.getElementById('math-field2')
+      var latexSpan = document.getElementById('latex1')
+      var latexSpan2 = document.getElementById('latex2')
+
+      var MQ = MathQuill.getInterface(2) // for backcompat
+      var mathField1 = MQ.MathField(mathFieldSpan1, {
+        spaceBehavesLikeTab: true, // configurable
+        handlers: {
+          edit: function () {
+            // useful event handlers
+            latexSpan.textContent = mathField1.latex() // simple API
+          }
+        }
+      })
+    </script>
+
+    
+  </body>
+</html>

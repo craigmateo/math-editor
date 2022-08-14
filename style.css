@@ -1,0 +1,66 @@
+.container {
+    width: 40%;
+    height:500px;
+    margin: 0 auto;
+    border:1px solid black;
+}
+
+#testing {
+    width: 50%;
+    margin: 0 auto;
+    border:1px solid blue;
+    margin-top: 1rem;
+}
+
+.buttonContainer {
+    display: block;
+    margin: auto;
+    font-size: 0;
+}
+
+button {
+    height:42px;
+    display: inline-block;
+    margin:0;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mq-editable-field {
+    border: 1px dashed grey;
+    display: inline-table;
+    position: absolute;
+    background-color: white;
+}
+
+.dragdiv {
+    position: absolute;
+    z-index: 9;
+    text-align: center;
+  }
+  
+.dragdivheader {
+    padding: 5px;
+    margin-left: 5px;
+    min-width:20px;
+    cursor: move;
+    z-index: 10;
+    background-color: white;
+    border:none;
+    border: 1px dotted blue;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  /*
+  .dragdivheader:hover {
+    padding: 5px;
+    cursor: move;
+    z-index: 10;
+    background-color: #2196F3;
+    color: #fff;
+    display: table-row;
+  }
