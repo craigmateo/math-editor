@@ -1,6 +1,7 @@
+
+
+
 //Make the DIV element draggagle:
-
-
 $( document ).ready(function() {
     $('.dragdiv').hover(function(event){
     if (event.target.id.includes("dragdivheader")) {

@@ -19,6 +19,7 @@ $(document).keyup(function(event) {
     /* DELETE: Delete active math-field */
     if(event.which === 46) {
         $( "#"+activeID ).remove();
+        $( "#" + activeID.replace("math-field","dragdiv") ).remove();
         $( "#" + activeID.replace("math-field","latex") ).remove();
     }
 
@@ -65,7 +66,7 @@ $(document).on("click", "#fraction", function() {
     totalFields = max;
     activeID = "math-field"+String(totalFields);
 
-    $('<div class="dragdiv" id="dragdiv' + String(totalFields+1) +'"><div class="dragdivheader" id="dragdivheader' + String(totalFields+1) + '"></div><span class="math-field" id="math-field' + String(totalFields+1) + '"></span></div>').insertAfter( $( "#" + activeID.replace("math-field","dragdiv") ) );
+    $('<div class="dragdiv" id="dragdiv' + String(totalFields+1) +'"><div class="dragdivheader" id="dragdivheader' + String(totalFields+1) + '"><div class="math-field" id="math-field' + String(totalFields+1) + '"></div></div></div>').insertAfter( $( "#" + activeID.replace("math-field","dragdiv") ) );
     //$( '<p>Math field' + String(totalFields+1) + ': <span class="math-field" id="math-field' + String(totalFields+1) +'"></span></p>' ).insertAfter( $( "#" + activeID ) );
         $( '<p>LaTeX field' + String(totalFields+1) + ': <span id="latex' + String(totalFields+1) +'"></span></p>' ).insertAfter( $( "#" + activeID.replace("math-field","latex") ) );
         var varName = "mathFieldSpan" + String(totalFields+1);
