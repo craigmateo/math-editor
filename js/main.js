@@ -108,12 +108,13 @@ function addLine() {
     mode = "draw";
 }
 
+/*
 jQuery('html').keyup(function(e) {
     if (e.keyCode == 46) {
         canvas.remove(canvas.getActiveObject());
     }
 });
-
+*/
 function startDraw() {
     if (mode != "pencil") {
     mode = "pencil";

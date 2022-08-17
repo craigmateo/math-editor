@@ -1,5 +1,6 @@
 jQuery(window).on("load", function() {
-
+    activeID="math-field1";
+/*
     document.getElementById('filereader').onchange = function handleImage(e) {
         var reader = new FileReader();
         reader.onload = function(event) {
@@ -19,7 +20,7 @@ jQuery(window).on("load", function() {
         }
         reader.readAsDataURL(e.target.files[0]);
     }
-
+*/
     canvas.on('mouse:down', function(o) {
         isDown = true;
         console.log(mode);

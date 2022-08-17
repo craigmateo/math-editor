@@ -5,6 +5,7 @@ canvas, .upper-canvas {
     width: 100%;
     margin-top: 0;
     cursor: default;
+    max-width:629px;
 }
 
 h2 {
@@ -13,8 +14,15 @@ h2 {
 
 .container {
     display: block;
+    width: 630px;
+}
 
-    width: 632px;
+#button-container {
+    border: 1px solid lightgrey;
+}
+
+table tr  {
+    border: 1px solid lightgrey;
 
 }
 
@@ -57,8 +65,8 @@ h2 {
     padding: 2px 10px;
     text-transform: uppercase;
     color: white;
-    width: 37px;
-    height: 37px;
+    width: 45px;
+    height: 60px;
     margin-top: 0px;
     cursor: pointer;
 }

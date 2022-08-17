@@ -1,8 +1,17 @@
 var activeID;
 var activeDrag;
-var totalFields;
 var idmax;
+var target;
 
+
+$(".math-field").click(function(){
+    $('.mq-editable-field').each(function(){
+        if($( this ).hasClass('mq-focused') ) {
+            activeID =  $( this ).attr('id');
+            target = activeID.replace("math-field","dragdiv")
+        }
+  });
+});
 
 
 /* On keyup: get active element */
@@ -21,6 +30,8 @@ $(document).keyup(function(event) {
         $( "#"+activeID ).remove();
         $( "#" + activeID.replace("math-field","dragdiv") ).remove();
         $( "#" + activeID.replace("math-field","latex") ).remove();
+        
+    
     }
 
     /* ENTER: Create new math-field below active element */
@@ -31,30 +42,45 @@ $(document).keyup(function(event) {
 });
 
 /* click fraction button */
-$(document).on("click", "#fraction", function() {
+$("#fraction").click(function(){
+    let count=0;
     $('.mq-editable-field').each(function(){
-        if($( this ).hasClass('mq-focused') ) {
-            console.log($( this ).attr('id'));
-            activeID =  $( this ).attr('id');
-        }
+        count++;
     });
-    if (typeof activeID !== 'undefined') {
-        // write to last position of cursor
-        let mathFieldSpan = document.getElementById(activeID);
-        var mathField = MQ.MathField(mathFieldSpan);
-        mathField.write('\\frac{a}{b}');
+    if (count>0) {
+
+        $('.mq-editable-field').each(function(){
+            if($( this ).hasClass('mq-focused') ) {
+                activeID =  $( this ).attr('id');
+            }
+        });
+
+        if (typeof activeID != 'undefined') {
+            // write to last position of cursor
+            let mathFieldSpan = document.getElementById(activeID);
+            var mathField = MQ.MathField(mathFieldSpan);
+            mathField.write('\\frac{a}{b}');
+        }
     }
+    
     else {
         createField();
+        focus();
     }
   });
+
+  /* cursor focus active element */
+    function focus() {
+        var activeField = activeID.replace("math-field","mathField");
+        window[activeField].focus();
+    }
+
 
   /* Create new math field */
   function createField() {
     let max = 0;
     $('.mq-editable-field').each(function(){
         if($( this ).hasClass('mq-focused') ) {
-            console.log($( this ).attr('id'));
             activeID =  $( this ).attr('id');
         }
         let id =  $( this ).attr('id');
@@ -64,7 +90,9 @@ $(document).on("click", "#fraction", function() {
         }
     });
     totalFields = max;
-    activeID = "math-field"+String(totalFields);
+    console.log(max);
+    activeID = "math-field"+String(Math.max(1,totalFields));
+    console.log(activeID);
 
     $('<div class="dragdiv" id="dragdiv' + String(totalFields+1) +'"><div class="dragdivheader" id="dragdivheader' + String(totalFields+1) + '"><div class="math-field" id="math-field' + String(totalFields+1) + '"></div></div></div>').insertAfter( $( "#" + activeID.replace("math-field","dragdiv") ) );
     //$( '<p>Math field' + String(totalFields+1) + ': <span class="math-field" id="math-field' + String(totalFields+1) +'"></span></p>' ).insertAfter( $( "#" + activeID ) );
@@ -87,5 +115,8 @@ $(document).on("click", "#fraction", function() {
           })
           varNameField.focus();
           dragElement(document.getElementById("dragdiv" + String(totalFields+1)));
+          let top = parseInt(toppx+40);
+          $('#dragdiv' + String(totalFields+1)).css({ top: String(top)+'px' });
+          $('#dragdiv' + String(totalFields+1)).css({ left: leftpx+'px' });
     }
   

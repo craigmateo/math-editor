@@ -23,10 +23,24 @@
     <div class="container">
 
         <div class="button-container" id="button-container">
-            <button id="button-draw" class="button" onclick='startDraw()' title="Draw"><img src="assets/svg/draw.svg" /> </button>
-            <button id="button-clear" class="button" onclick='clearCanvas()' title="Delete All"><img src="assets/svg/trash.svg" /></button>
+          <table>
+            <tbody>
+            <tr>
+            <td><button id="button-draw" class="button" onclick='startDraw()' title="Draw"><img src="assets/svg/draw.svg" /> </button></td>
+            <td><button id="button-clear" class="button" onclick='clearCanvas()' title="Delete All"><img src="assets/svg/trash.svg" /></button></td>
+            <td><button id="fraction" class="button" title="Fraction"><img src="assets/svg/fraction.svg" /></button></td>
+            <td><button id="sigma" class="button" title="Sigma"><img src="assets/svg/sigma.svg" /></button></td>
+            <td><button id="sigma" class="button" title="Integral"><img src="assets/svg/integral.svg" /></button></td>
+           <td><input id="filereader" type="file" accept="image/*" />
+              <label for="filereader" class="custom-file-upload" title="Upload Image">
+                  <img src="assets/svg/image.svg" />
+              </label></td>  
+          </tr>
+            </tbody>
+            </table>
+            
+            <!--
             <button id="button-select" class="button" onclick='select()' title="Select"><img src="assets/svg/select.svg" /> </button>
-            <button id="button-hex" class="button" onclick='addHex()' title="Hexagon"><img src="assets/svg/fraction.svg" /></button>
             <button id="button-pent" class="button" onclick='addPent()' title="Pentagon"><img src="assets/svg/pentagon.svg" /></button>
             <button id="button-tri" class="button" onclick='addTriangle()' title="Triangle"><img src="assets/svg/triangle.svg" /></button>
             <button id="button-rec" class="button" onclick='addRect()' title="Rectangle"><img src="assets/svg/rectangle.svg" /></button>
@@ -39,14 +53,11 @@
             <button id="button-subscript" class="button" onclick="subScript()" title="Subscript"><img src="assets/svg/text-sub.svg" /></button>
             <button id="button-superscript" class="button" onclick="superScript()" title="Superscript"><img src="assets/svg/text-sup.svg" /></button>
             <button id="button-line" class="button" onclick='addArrow()' title="Arrow"><img src="assets/svg/arrow.svg" /></button>
-
+-->
             <!-- button-save for testing: output to console.log -->
-            <button id="button-save" class="button" onclick='saveCanvas()' style="display:none;">Save</button>
+            
 
-            <input id="filereader" type="file" accept="image/*" />
-            <label for="filereader" class="custom-file-upload" title="Upload Image">
-                <img src="assets/svg/image.svg" />
-            </label>
+            
         </div>
 
         <div class="dragdiv" id="dragdiv1">
@@ -65,9 +76,7 @@
       </div>
       <script>
         var mathFieldSpan1 = document.getElementById('math-field1')
-        var mathFieldSpan2 = document.getElementById('math-field2')
         var latexSpan = document.getElementById('latex1')
-        var latexSpan2 = document.getElementById('latex2')
   
         var MQ = MathQuill.getInterface(2) // for backcompat
         var mathField1 = MQ.MathField(mathFieldSpan1, {
